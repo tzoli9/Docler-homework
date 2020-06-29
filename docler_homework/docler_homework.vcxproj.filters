@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="homework.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="output\ioutput.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="output\console.h">
+      <Filter>output</Filter>
+    </ClInclude>
+    <ClInclude Include="base\error.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\types.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\enumflag.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="art\drawer.h">
+      <Filter>art</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="homework.cpp" />
+    <ClCompile Include="output\console.cpp">
+      <Filter>output</Filter>
+    </ClCompile>
+    <ClCompile Include="base\error.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="art\drawer.cpp">
+      <Filter>art</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="output">
+      <UniqueIdentifier>{091d1739-a6e7-47b1-a91e-83f604dfdf04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{45c7b171-4848-445a-875d-46ef677e598f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="art">
+      <UniqueIdentifier>{0f4037fe-fa4e-4459-b4ba-999f1a69231b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
