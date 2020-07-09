@@ -1,0 +1,16 @@
+lvl1:
+§  A forráskód tartalmaz pár fordítási hibát és figyelmeztetést, ezt javítsd ki
+§  A forráskód tartalmaz pár logikai hibát, ezt javítsd ki
+
+lvl2:
+§  Készíts egy osztályt, ami egy leíró fájl alapján rajzol ki valamit a console ra
+§  Tervezd meg ezt a leíró fájl
+§  Ezzel a leíró fájlal hozz létre különböző mintákat
+§  Azt, hogy melyik fájlt használja a program, egy paraméterben adjuk át neki
+
+lvl3:
+§  Működjön a kirajzolás a Drawer osztállyal, vagy az új leíró fájl alapú osztállyal is, hogy épp melyikkel, az is paraméterben érkezzen
+§  Készíts animációt, változzanak a színek, vagy a formák, az animáció adatait is fájlból olvassa
+
+A megoldások a már elkészített kódhoz igazodjanak, ez a kód alapján tervezd meg az új osztályokat, függvényeket, a kód olvashatósága is tükrözze ezt az utat.
+Törekedj, hogy az elkészült kód legyen OOP, ne használj felesleges STD osztályokat.

@@ -1,0 +1,11 @@
+Level 2:
+docler_homework.exe <fullpath_file_name>
+pl.:
+docler_homework.exe doc1.aad
+(aad = ascii art document)
+
+Level 3:
+docler_homework.exe <drawer_type> <fullpath_file_name>
+pl.:
+docler_homework.exe art
+docler_homework.exe asciiart doc2.aad
