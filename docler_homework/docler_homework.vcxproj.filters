@@ -18,6 +18,18 @@
     <ClInclude Include="art\drawer.h">
       <Filter>art</Filter>
     </ClInclude>
+    <ClInclude Include="asciiart\dictionaryobject.h">
+      <Filter>asciiart</Filter>
+    </ClInclude>
+    <ClInclude Include="asciiart\document.h">
+      <Filter>asciiart</Filter>
+    </ClInclude>
+    <ClInclude Include="asciiart\documentdrawer.h">
+      <Filter>asciiart</Filter>
+    </ClInclude>
+    <ClInclude Include="asciiart\docobject.h">
+      <Filter>asciiart</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -31,6 +43,18 @@
     <ClCompile Include="art\drawer.cpp">
       <Filter>art</Filter>
     </ClCompile>
+    <ClCompile Include="asciiart\dictionaryobject.cpp">
+      <Filter>asciiart</Filter>
+    </ClCompile>
+    <ClCompile Include="asciiart\document.cpp">
+      <Filter>asciiart</Filter>
+    </ClCompile>
+    <ClCompile Include="asciiart\documentdrawer.cpp">
+      <Filter>asciiart</Filter>
+    </ClCompile>
+    <ClCompile Include="asciiart\docobject.cpp">
+      <Filter>asciiart</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="output">
@@ -41,6 +65,9 @@
     </Filter>
     <Filter Include="art">
       <UniqueIdentifier>{0f4037fe-fa4e-4459-b4ba-999f1a69231b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="asciiart">
+      <UniqueIdentifier>{223d35f0-7460-4434-b69e-3bf5fddec2bf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

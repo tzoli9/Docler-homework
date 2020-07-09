@@ -147,6 +147,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="art\drawer.h" />
+    <ClInclude Include="asciiart\dictionaryobject.h" />
+    <ClInclude Include="asciiart\document.h" />
+    <ClInclude Include="asciiart\documentdrawer.h" />
+    <ClInclude Include="asciiart\docobject.h" />
     <ClInclude Include="base\error.h" />
     <ClInclude Include="base\types.h" />
     <ClInclude Include="homework.h" />
@@ -156,6 +160,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="art\drawer.cpp" />
+    <ClCompile Include="asciiart\dictionaryobject.cpp" />
+    <ClCompile Include="asciiart\document.cpp" />
+    <ClCompile Include="asciiart\documentdrawer.cpp" />
+    <ClCompile Include="asciiart\docobject.cpp" />
     <ClCompile Include="base\error.cpp" />
     <ClCompile Include="homework.cpp" />
     <ClCompile Include="output\console.cpp" />

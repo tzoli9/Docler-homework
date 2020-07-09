@@ -33,11 +33,16 @@ namespace nSystem
     public:
         virtual Error MoveCursor( const COORD& pCoord ) = 0;
 
-
         virtual Error SetColor( const BackColor pBackColor
                               , const ForeColor pForeColor ) = 0;
 
         virtual Error Clear() = 0;
+
+        virtual Error SetCursorVisible( bool pVisible ) = 0;
+
+        virtual Error SaveState() = 0;
+
+        virtual Error RestoreState() = 0;
 
     public:
         virtual Error PutString( const char* const pFmt

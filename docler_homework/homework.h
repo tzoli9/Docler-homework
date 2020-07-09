@@ -1,5 +1,6 @@
 #pragma once
 
+#define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
@@ -10,6 +11,12 @@
 #include <assert.h>
 
 #include <list>
+#include <vector>
+#include <map>
+#include <memory>
+#include <limits>
+#include <fstream>
+#include <string>
 
 #include "base/types.h"
 #include "base/error.h"
@@ -18,3 +25,8 @@
 #include "output/console.h"
 
 #include "art/drawer.h"
+
+#include "asciiart/dictionaryobject.h"
+#include "asciiart/docobject.h"
+#include "asciiart/document.h"
+#include "asciiart/documentdrawer.h"

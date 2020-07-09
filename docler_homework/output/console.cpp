@@ -5,6 +5,7 @@ using namespace nSystem;
 
 Console::Console()
     : m_Handle( GetStdHandle( STD_OUTPUT_HANDLE ) )
+    , m_wAttributes ( FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE )
 {
     assert( m_Handle != INVALID_HANDLE_VALUE );
 }
@@ -47,7 +48,7 @@ Error Console::SetColor( const BackColor pBackColor
 Error Console::Clear()
 {
     const Error lResetResp = SetColor( BackColor::Black, ForeColor::White );
-    if ( !lResetResp )
+    if ( !lResetResp)
     {
         return lResetResp;
     }
@@ -56,6 +57,69 @@ Error Console::Clear()
     if ( lSysRes != 0 )
     {
         return Error( "Failed to clear the console" );
+    }
+
+    return Error();
+}
+
+Error Console::SetCursorVisible( bool pVisible )
+{
+    if ( m_Handle == INVALID_HANDLE_VALUE )
+    {
+        return Error( Error::kInvalidHandle, "Invalid console handle" );
+    }
+
+    CONSOLE_CURSOR_INFO info;
+
+    const BOOL lGetConsoleCursorInfoResult = GetConsoleCursorInfo( m_Handle, &info );
+    if ( lGetConsoleCursorInfoResult == FALSE )
+    {
+        return Error( "Failed to set cursor info" );
+    }
+
+    info.bVisible = (pVisible ? TRUE : FALSE);
+    const BOOL lSetConsoleCursorInfoResult = SetConsoleCursorInfo( m_Handle, &info );
+
+    if ( lSetConsoleCursorInfoResult == FALSE )
+    {
+        return Error( "Failed to set cursor info" );
+    }
+
+    return Error();
+}
+
+Error Console::SaveState()
+{
+    if ( m_Handle == INVALID_HANDLE_VALUE )
+    {
+        return Error( Error::kInvalidHandle, "Invalid console handle" );
+    }
+
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    const BOOL lResult = GetConsoleScreenBufferInfo( m_Handle, &csbi );
+
+    if ( lResult == FALSE )
+    {
+        return Error( "Failed to get screen buffer info" );
+    }
+
+    m_wAttributes = csbi.wAttributes;
+
+    return Error();
+}
+
+Error Console::RestoreState()
+{
+    if ( m_Handle == INVALID_HANDLE_VALUE )
+    {
+        return Error( Error::kInvalidHandle, "Invalid console handle" );
+    }
+
+    const BOOL lResult = SetConsoleTextAttribute( m_Handle, m_wAttributes );
+
+    if ( lResult == FALSE )
+    {
+        return Error( "Failed to set color" );
     }
 
     return Error();

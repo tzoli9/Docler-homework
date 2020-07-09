@@ -6,6 +6,7 @@ namespace nSystem
     {
     private:
         HANDLE m_Handle;
+        WORD m_wAttributes;
 
     public:
         Console();
@@ -19,9 +20,14 @@ namespace nSystem
 
         Error Clear() override;
 
+        Error SetCursorVisible( bool pVisible ) override;
+
+        Error SaveState() override;
+
+        Error RestoreState() override;
+
     public:
         Error PutString( const char* const pFmt
                         , ... ) override;
-
     };
 }

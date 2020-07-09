@@ -9,6 +9,10 @@ namespace nSystem
     public:
         static constexpr const int32_ht kNoError       =  0;
         static constexpr const int32_ht kInvalidHandle = -1;
+        static constexpr const int32_ht kInvalidNumberOfArguments = -2;
+        static constexpr const int32_ht kErrorWhileLoadingDocument = -3;
+        static constexpr const int32_ht kInvalidObject = -4;
+        static constexpr const int32_ht kInvalidDocument = -5;
 
     private:
         const int32_ht          m_Code;
