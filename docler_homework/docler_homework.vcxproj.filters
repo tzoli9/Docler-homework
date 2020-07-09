@@ -30,6 +30,12 @@
     <ClInclude Include="asciiart\docobject.h">
       <Filter>asciiart</Filter>
     </ClInclude>
+    <ClInclude Include="animation\animation.h">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="base\coord.h">
+      <Filter>base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -55,6 +61,9 @@
     <ClCompile Include="asciiart\docobject.cpp">
       <Filter>asciiart</Filter>
     </ClCompile>
+    <ClCompile Include="animation\animation.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="output">
@@ -68,6 +77,9 @@
     </Filter>
     <Filter Include="asciiart">
       <UniqueIdentifier>{223d35f0-7460-4434-b69e-3bf5fddec2bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="animation">
+      <UniqueIdentifier>{c5c5ad50-0c0d-4436-a328-1932839441dd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

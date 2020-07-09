@@ -62,3 +62,11 @@ KYLE 26 0 black red
 CARTMAN 0 12 black green
 KENNY 26 12 black blue
 ]]>OBJECTS
+<![ANIMATIONS[
+cubic 1000 5 0
+cubic 1000 0 5
+cubic 1000 5 0
+cubic 1000 0 5
+cubic 1000 5 0
+cubic 1000 0 5
+]]>ANIMATIONS

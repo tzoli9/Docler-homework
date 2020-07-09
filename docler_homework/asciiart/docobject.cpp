@@ -9,6 +9,7 @@ DocObject::DocObject()
     m_ForegroundColor = nSystem::IOutput::ForeColor::White;
 
     m_BaseCoord = COORD{ 0, 0 };
+    m_AnimationStartBaseCoord = COORD{ 0, 0 };
 }
 
 nSystem::Error DocObject::Draw( nSystem::IOutput& pOutput ) const
@@ -48,4 +49,14 @@ void DocObject::SetForeColor( const nSystem::IOutput::ForeColor pBackgroundColor
 void DocObject::SetDictionaryObject( std::weak_ptr<DictionaryObject> pAsciiArtDictionaryObject )
 {
     m_DictionaryObjectWeakPtr = std::move( pAsciiArtDictionaryObject );
+}
+
+void DocObject::InitAnimation()
+{
+    m_AnimationStartBaseCoord = m_BaseCoord;
+}
+
+void DocObject::ActualizeWhenAnimating( const COORD& pMoveVector )
+{
+    m_BaseCoord = m_AnimationStartBaseCoord + pMoveVector;
 }

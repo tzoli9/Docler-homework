@@ -7,13 +7,16 @@ using namespace nSystem;
 namespace
 {
     constexpr const char* const kDictionaryBegin = "<![DICTIONARY[";
-    constexpr const char* const kDictionaryEnd = "]]>DICTIONARY";
+    constexpr const char* const kDictionaryEnd   = "]]>DICTIONARY";
 
     constexpr const char* const kDictionaryItemBegin = "<![ITEM[";
-    constexpr const char* const kDictionaryItemEnd = "]]>ITEM";
+    constexpr const char* const kDictionaryItemEnd   = "]]>ITEM";
 
     constexpr const char* const kObjectsBegin = "<![OBJECTS[";
-    constexpr const char* const kObjectsEnd = "]]>OBJECTS";
+    constexpr const char* const kObjectsEnd   = "]]>OBJECTS";
+
+    constexpr const char* const kAnimationsBegin = "<![ANIMATIONS[";
+    constexpr const char* const kAnimationsEnd   = "]]>ANIMATIONS";
 }
 
 
@@ -140,6 +143,64 @@ Error Document::LoadObjects( std::ifstream& pInFile )
     return Error( Error::kErrorWhileLoadingDocument, "Failed to load ascii art objects" );
 }
 
+nSystem::Error Document::LoadAnimations( std::ifstream& pInFile )
+{
+    for ( std::string line; std::getline( pInFile, line ); )
+    {
+        if ( line == kAnimationsEnd )
+        {
+            return Error();
+        }
+
+        const std::vector<std::string> tokenizedLine = Tokenize( line );
+
+        if ( tokenizedLine.size() != 4 )
+        {
+            return Error( Error::kErrorWhileLoadingDocument, "Failed to load animations" );
+        }
+
+        const std::string& accelerationString = tokenizedLine[0];
+        nAnimation::Animation::Acceleration acceleration = nAnimation::Animation::Acceleration::Linear;
+        const Error accelerationLoadRes = Document::ParseAcceleration( accelerationString, acceleration );
+        if ( !accelerationLoadRes )
+        {
+            return accelerationLoadRes;
+        }
+
+        const std::string& durationStr = tokenizedLine[1];
+        SHORT duration = 0;
+        const Error durationLoadRes = Document::ParseShort( durationStr, duration );
+        if ( !durationLoadRes )
+        {
+            return durationLoadRes;
+        }
+
+        if ( duration <= 0 )
+        {
+            return Error( Error::kErrorWhileLoadingDocument, "Invalid duration" );
+        }
+
+        const std::string& moveVectorXStr = tokenizedLine[2];
+        SHORT moveVectorX = 0;
+        if ( const Error moveVectorXLoadRes = Document::ParseShort( moveVectorXStr, moveVectorX ); !moveVectorXLoadRes )
+        {
+            return moveVectorXLoadRes;
+        }
+
+        const std::string& moveVectorYStr = tokenizedLine[3];
+        SHORT moveVectorY = 0;
+        if ( const Error moveVectorYLoadRes = Document::ParseShort( moveVectorYStr, moveVectorY ); !moveVectorYLoadRes )
+        {
+            return moveVectorYLoadRes;
+        }
+
+        auto animation = std::make_unique<nAnimation::Animation>( acceleration, duration, COORD{ moveVectorX, moveVectorY } );
+        m_Animations.push_back( std::move( animation ) );
+    }
+
+    return Error( Error::kErrorWhileLoadingDocument, "Failed to load animations" );
+}
+
 Error Document::ParseShort( const std::string& pShortString
                           , SHORT& pShort )
 {
@@ -250,6 +311,30 @@ Error Document::ParseBackgroundColor( const std::string& pColorString
     return Error( Error::kErrorWhileLoadingDocument, "Failed to parse background color" );
 }
 
+nSystem::Error Document::ParseAcceleration( const std::string& pAccelerationString
+                                          , nAnimation::Animation::Acceleration& pAcceleration )
+{
+    if ( pAccelerationString == "linear" )
+    {
+        pAcceleration = nAnimation::Animation::Acceleration::Linear;
+        return Error();
+    }
+
+    if ( pAccelerationString == "cubic" )
+    {
+        pAcceleration = nAnimation::Animation::Acceleration::Cubic;
+        return Error();
+    }
+
+    if ( pAccelerationString == "bounce" )
+    {
+        pAcceleration = nAnimation::Animation::Acceleration::Bounce;
+        return Error();
+    }
+
+    return Error( Error::kErrorWhileLoadingDocument, "Failed to parse acceleration" );
+}
+
 Error Document::Load( const char* const pFileName )
 {
     m_AsciiArtObjects.clear();
@@ -277,13 +362,17 @@ Error Document::Load( const char* const pFileName )
                 return res;
             }
         }
-        /*
-        // ezt azert veszem ki, hogy animation-t tartalmazo file-t is beolvassunk
+        else if ( line == kAnimationsBegin )
+        {
+            if ( const Error res = LoadAnimations( inFile ); !res )
+            {
+                return res;
+            }
+        }
         else
         {
             return Error( Error::kErrorWhileLoadingDocument, "Invalid document section" );
         }
-        */
     }
 
     return Error();
@@ -292,4 +381,25 @@ Error Document::Load( const char* const pFileName )
 const std::vector<std::unique_ptr<DocObject>>& Document::GetAsciiArtObjects() const
 {
     return m_AsciiArtObjects;
+}
+
+const std::vector<std::unique_ptr<nAnimation::Animation>>& Document::GetAnimations() const
+{
+    return m_Animations;
+}
+
+void Document::InitAnimation()
+{
+    for ( const std::unique_ptr<DocObject>& docObject : m_AsciiArtObjects )
+    {
+        docObject->InitAnimation();
+    }
+}
+
+void Document::ActualizeWhenAnimating( const COORD& pMoveVector )
+{
+    for ( const std::unique_ptr<DocObject>& docObject : m_AsciiArtObjects )
+    {
+        docObject->ActualizeWhenAnimating( pMoveVector );
+    }
 }

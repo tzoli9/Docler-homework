@@ -9,6 +9,7 @@ namespace nAsciiArt
         nSystem::IOutput::ForeColor m_ForegroundColor;
 
         COORD m_BaseCoord;
+        COORD m_AnimationStartBaseCoord;
         std::weak_ptr<DictionaryObject> m_DictionaryObjectWeakPtr;
 
     public:
@@ -19,5 +20,8 @@ namespace nAsciiArt
         void SetBackColor( const nSystem::IOutput::BackColor pBackgroundColor );
         void SetForeColor( const nSystem::IOutput::ForeColor pBackgroundColor );
         void SetDictionaryObject( std::weak_ptr<DictionaryObject> pAsciiArtDictionaryObject );
+
+        void InitAnimation();
+        void ActualizeWhenAnimating( const COORD& pMoveVector );
     };
 }

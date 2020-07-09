@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <math.h>
+#include <sys/timeb.h>
 
 #include <list>
 #include <vector>
@@ -20,11 +22,14 @@
 
 #include "base/types.h"
 #include "base/error.h"
+#include "base/coord.h"
 
 #include "output/ioutput.h"
 #include "output/console.h"
 
 #include "art/drawer.h"
+
+#include "animation/animation.h"
 
 #include "asciiart/dictionaryobject.h"
 #include "asciiart/docobject.h"

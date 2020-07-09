@@ -48,7 +48,7 @@ Error Console::SetColor( const BackColor pBackColor
 Error Console::Clear()
 {
     const Error lResetResp = SetColor( BackColor::Black, ForeColor::White );
-    if ( !lResetResp)
+    if ( !lResetResp )
     {
         return lResetResp;
     }

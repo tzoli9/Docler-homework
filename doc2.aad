@@ -39,3 +39,9 @@ RECT 10 7 black red
 RECT 20 7 black green
 RECT 30 7 black blue
 ]]>OBJECTS
+<![ANIMATIONS[
+cubic 2000 30 0
+bounce 3000 0 30
+cubic 2000 -30 0
+linear 2000 0 -30
+]]>ANIMATIONS

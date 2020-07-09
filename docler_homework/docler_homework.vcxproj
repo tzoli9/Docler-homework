@@ -146,11 +146,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="animation\animation.h" />
     <ClInclude Include="art\drawer.h" />
     <ClInclude Include="asciiart\dictionaryobject.h" />
     <ClInclude Include="asciiart\document.h" />
     <ClInclude Include="asciiart\documentdrawer.h" />
     <ClInclude Include="asciiart\docobject.h" />
+    <ClInclude Include="base\coord.h" />
     <ClInclude Include="base\error.h" />
     <ClInclude Include="base\types.h" />
     <ClInclude Include="homework.h" />
@@ -159,6 +161,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="animation\animation.cpp" />
     <ClCompile Include="art\drawer.cpp" />
     <ClCompile Include="asciiart\dictionaryobject.cpp" />
     <ClCompile Include="asciiart\document.cpp" />
