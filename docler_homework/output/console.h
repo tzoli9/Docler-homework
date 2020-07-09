@@ -12,8 +12,7 @@ namespace nSystem
         virtual ~Console() = default;
 
     public:
-        Error MoveCursor( const uint16_ht pX
-                        , const uint16_ht pY ) override;
+        Error MoveCursor( const COORD& pCoord ) override;
 
         Error SetColor( const BackColor pBackColor
                       , const ForeColor pForeColor ) override;

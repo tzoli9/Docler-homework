@@ -72,18 +72,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)\build\output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\build\int\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\build\output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\build\int\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)\build\output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\build\int\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\build\output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\build\int\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -143,7 +147,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="art\drawer.h" />
-    <ClInclude Include="base\enumflag.h" />
     <ClInclude Include="base\error.h" />
     <ClInclude Include="base\types.h" />
     <ClInclude Include="homework.h" />

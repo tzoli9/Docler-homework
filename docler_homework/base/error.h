@@ -11,7 +11,7 @@ namespace nSystem
         static constexpr const int32_ht kInvalidHandle = -1;
 
     private:
-        int32_ht          m_Code;
+        const int32_ht          m_Code;
         const char* const m_UserMessage;
 
     public:
@@ -33,7 +33,7 @@ namespace nSystem
         inline bool operator==( const int32_ht aRhs ) const;
         inline bool operator!=( const int32_ht aRhs ) const;
 
-        inline operator bool() const;
+        explicit inline operator bool() const;
 
     public:
         void Display( IOutput& aOutput ) const;
@@ -55,7 +55,7 @@ namespace nSystem
                , pUserMessage )
     {}
 
-    int32_ht Error::GetCode() const
+    inline int32_ht Error::GetCode() const
     {
         return m_Code;
     }

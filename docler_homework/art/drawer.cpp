@@ -298,7 +298,7 @@ nSystem::Error Drawer::Draw( nSystem::IOutput& pOutput )
     for ( const sData& data : kCoords )
     {
         assert( data.text != nullptr );
-        const nSystem::Error moveRes = pOutput.MoveCursor( data.coord.X, data.coord.Y );
+        const nSystem::Error moveRes = pOutput.MoveCursor( data.coord );
         if ( !moveRes )
         {
             return moveRes;

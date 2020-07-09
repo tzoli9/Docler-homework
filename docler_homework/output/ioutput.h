@@ -9,8 +9,8 @@ namespace nSystem
         {
               White = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE
             , Black = 0
-            , Red   = FOREGROUND_GREEN
-            , Green = FOREGROUND_RED
+            , Red   = FOREGROUND_RED
+            , Green = FOREGROUND_GREEN
             , Blue  = FOREGROUND_BLUE
         };
 
@@ -18,8 +18,8 @@ namespace nSystem
         {
               White = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE
             , Black = 0
-            , Red   = BACKGROUND_GREEN
-            , Green = BACKGROUND_RED
+            , Red   = BACKGROUND_RED
+            , Green = BACKGROUND_GREEN
             , Blue  = BACKGROUND_BLUE
         };
 
@@ -31,8 +31,7 @@ namespace nSystem
 
 
     public:
-        virtual Error MoveCursor( const uint16_ht pX
-                                , const uint16_ht pY ) = 0;
+        virtual Error MoveCursor( const COORD& pCoord ) = 0;
 
 
         virtual Error SetColor( const BackColor pBackColor
@@ -44,7 +43,4 @@ namespace nSystem
         virtual Error PutString( const char* const pFmt
                                , ... ) = 0;
     };
-
-    ENUM_FLAG( IOutput::ForeColor );
-    ENUM_FLAG( IOutput::BackColor );
 }
